@@ -19,27 +19,30 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     [SerializeField] GameObject CurrentPlayer;
     [SerializeField] GameObject parent;
-    [SerializeField] GameObject CubePref;
+    [SerializeField] List<GameObject> CubePref;
     private Rigidbody rb;
 
     private void Update()
     {
-        float sliderValue = slider.value;
+        if (CurrentPlayer != null)
+        {
+            float sliderValue = slider.value;
 
-        // Map the slider value to the position of the cube
-        float newPositionX = Mathf.Lerp(-2f, 2f, (sliderValue + 1f) / 2f); // Adjust the range as needed
-        //Player = GameObject.FindGameObjectWithTag("Spawnner").transform.GetChild(0).gameObject;
-        // Smoothly move the cube's position
-        CurrentPlayer.transform.position = Vector3.Lerp(CurrentPlayer.transform.position, new Vector3(newPositionX, CurrentPlayer.transform.position.y, CurrentPlayer.transform.position.z), moveSpeed * Time.deltaTime);
+            // Map the slider value to the position of the cube
+            float newPositionX = Mathf.Lerp(-1.5f, 1.5f, (sliderValue + 1f) / 2f); // Adjust the range as needed
+                                                                                   // Smoothly move the cube's position
+            CurrentPlayer.transform.position = Vector3.Lerp(CurrentPlayer.transform.position, new Vector3(newPositionX, CurrentPlayer.transform.position.y, CurrentPlayer.transform.position.z), moveSpeed * Time.deltaTime);
+        }
     }
     void SpawnCube()
     {
-        CurrentPlayer = Instantiate(CubePref, new Vector3(0, 4f, -5.5f), Quaternion.identity, parent.transform);
+        int randomVal = Random.Range(0, CubePref.Count);
+        CurrentPlayer = Instantiate(CubePref[randomVal], new Vector3(0, 4f, -5.5f), Quaternion.identity, parent.transform);
     }
     public void OnCLickRelease()
     {
         Debug.Log("Force applied");
-        CurrentPlayer.GetComponent<Rigidbody>().AddForce(Vector3.forward * 30, ForceMode.VelocityChange);
+        CurrentPlayer.GetComponent<Rigidbody>().AddForce(Vector3.forward * moveSpeed, ForceMode.VelocityChange);
         //this.transform.SetParent(newParent);
     }
     void Start()
@@ -69,16 +72,14 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     // Method to be called when the slider is clicked
     void HandleSliderClick(BaseEventData eventData)
     {
-        Debug.Log("Slider Clicked");
         OnSliderClick.Invoke(); // Invoke any additional events or actions
     }
 
     // Method to be called when the slider click is released
     void HandleSliderRelease(BaseEventData eventData)
     {
-        Debug.Log("Slider Released");
         OnSliderRelease.Invoke(); // Invoke any additional events or actions
-        Invoke("SpawnCube", 0.2f);
+        Invoke("SpawnCube", 0.4f);
     }
     
     void AddEventTriggerListener(EventTrigger trigger, EventTriggerType eventType, UnityAction<BaseEventData> callback)
@@ -90,12 +91,9 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Down");
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        //throw new System.NotImplementedException();
-        Debug.Log("Up");
     }
     //void OnSliderValueChanged(float value)
     //{

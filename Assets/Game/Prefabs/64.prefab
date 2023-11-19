@@ -1085,7 +1085,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8a78fec1ff355674dbe87df215305092, type: 2}
+  - {fileID: 2100000, guid: 9f4dd132ab1104844b8345b0ab451d45, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1167,6 +1167,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5146b104ffb497547a55f8c29506b80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fourthCube: {fileID: 0}
+  EightthCube: {fileID: 0}
+  SixteenthCube: {fileID: 0}
+  ThirtyTwoCube: {fileID: 0}
+  SixtyFourcube: {fileID: 0}
+  OneTwentyEightCube: {fileID: 0}
+  TwoFourtyEightCube: {fileID: 0}
 --- !u!1 &8462195467668319537
 GameObject:
   m_ObjectHideFlags: 0
