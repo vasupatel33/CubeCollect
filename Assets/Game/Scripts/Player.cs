@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     //        GameObject g = Instantiate(ThirtyTwoCube, spawnPos, Quaternion.identity);
     //    }
     //}
-    [SerializeField] GameObject[] objectsWithSameTag;
+    //[SerializeField] GameObject[] objectsWithSameTag;
     bool destroyedOneObject;
     //private void OnCollisionEnter(Collision collision)
     //{

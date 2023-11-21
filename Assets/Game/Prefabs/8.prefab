@@ -1028,7 +1028,8 @@ GameObject:
   - component: {fileID: 329025100078523146}
   - component: {fileID: 5946600689307311039}
   - component: {fileID: 587429500389022841}
-  - component: {fileID: 5452662889929700971}
+  - component: {fileID: 3505692294502516664}
+  - component: {fileID: 5168604654753396203}
   m_Layer: 0
   m_Name: 8
   m_TagString: 8
@@ -1155,7 +1156,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5452662889929700971
+--- !u!114 &3505692294502516664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1164,16 +1165,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 8442865283195504189}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5146b104ffb497547a55f8c29506b80d, type: 3}
+  m_Script: {fileID: 11500000, guid: afb3870c87bac554a9be9f8576223eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fourthCube: {fileID: 8442865283195504189, guid: 446d880658f5fea40a3d826632669cf3, type: 3}
-  EightthCube: {fileID: 8442865283195504189}
-  SixteenthCube: {fileID: 8442865283195504189, guid: 788a57ad5a428544b89ec6b53e415912, type: 3}
-  ThirtyTwoCube: {fileID: 8442865283195504189, guid: c762e1b54d394424e80b4b69d1c02e5e, type: 3}
-  SixtyFourcube: {fileID: 0}
-  OneTwentyEightCube: {fileID: 0}
-  TwoFourtyEightCube: {fileID: 0}
+  CubeID: 0
+--- !u!114 &5168604654753396203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8442865283195504189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1902cf296eeb284bbcd3deaeb4e27b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab2: {fileID: 8442865283195504189, guid: dd6f845ce7ff86f4488bf0c6b4f3e864, type: 3}
+  prefab4: {fileID: 8442865283195504189, guid: 446d880658f5fea40a3d826632669cf3, type: 3}
+  prefab8: {fileID: 8442865283195504189}
+  prefab16: {fileID: 8442865283195504189, guid: 788a57ad5a428544b89ec6b53e415912, type: 3}
+  prefab32: {fileID: 8442865283195504189, guid: c762e1b54d394424e80b4b69d1c02e5e, type: 3}
+  prefab64: {fileID: 8442865283195504189, guid: 216c49c132d236140ba53b021e2ace53, type: 3}
+  prefab128: {fileID: 8442865283195504189, guid: 4ec31c94461b8f24b945dc55108a8af8, type: 3}
+  prefab256: {fileID: 8442865283195504189, guid: 9d12c4dc8fea17844958f47332aa3234, type: 3}
+  prefab512: {fileID: 8442865283195504189, guid: 3a57ea3f0630b8a4d8dda2f6a0b8cae2, type: 3}
+  prefab1024: {fileID: 8442865283195504189, guid: abd3fbbab00d3284e9beb823a3d61dad, type: 3}
+  prefab2048: {fileID: 8442865283195504189, guid: 68e8155b015210e498b38a73c3c0567e, type: 3}
+  prefab4096: {fileID: 8442865283195504189, guid: 1c0397f51e24a0b4287372765c900178, type: 3}
+  parent: {fileID: 0}
 --- !u!1 &8462195467668319537
 GameObject:
   m_ObjectHideFlags: 0
