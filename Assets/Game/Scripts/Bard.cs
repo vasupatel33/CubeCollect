@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bard : MonoBehaviour
@@ -26,10 +23,6 @@ public class Bard : MonoBehaviour
         //    {"32", prefab32},
         //};
     }
-    //bool isOn;
-    private bool collisionProcessed = false;
-
-    
 }
 //using System.Collections;
 //using UnityEngine;

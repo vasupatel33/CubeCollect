@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using System.Collections.Generic;
-
+using DG.Tweening;
 public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public Slider slider;
@@ -38,6 +38,8 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         int randomVal = Random.Range(0, CubePref.Count);
         CurrentPlayer = Instantiate(CubePref[randomVal], new Vector3(0, 4f, -5.5f), Quaternion.identity, parent.transform);
+        CurrentPlayer.transform.DOScale(new Vector3(0,0,0), 0.01f);
+        CurrentPlayer.transform.DOScale(new Vector3(1, 1, 1), .8f).SetEase(Ease.OutBounce);
     }
     public void OnCLickRelease()
     {
@@ -47,7 +49,6 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
     void Start()
     {
-
         rb = GetComponent<Rigidbody>();
         // Ensure the slider component is not null
         if (slider != null)
@@ -95,14 +96,5 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
     }
-    //void OnSliderValueChanged(float value)
-    //{
-    //    // Calculate the force based on the slider value
-    //    float forceMagnitude = value * maxForce;
-
-    //    transform.Translate(new Vector3(forceMagnitude * Time.deltaTime * moveSpeed,0,0));
-    //    transform.position = Vector3.Lerp()
-    //    // Apply force to move the player
-    //    //rb.velocity = new Vector3(forceMagnitude, 0f, 0f) * moveSpeed;
-    //}
+   
 }
