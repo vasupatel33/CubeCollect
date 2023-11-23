@@ -1,40 +1,82 @@
 using UnityEngine;
 using DG.Tweening;
-using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
+using Unity.Burst.Intrinsics;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] GameObject TapImage, SettingPanel;
+    [SerializeField] GameObject TapImage, SettingPanel, InputFieldPanel, BGClickRemoveImage;
+    [SerializeField] TMP_InputField InputFieldText;
+    [SerializeField] TextMeshProUGUI NameText;
+    [SerializeField] Button VibrationBtn, SoundBtn;
+    [SerializeField] Sprite VibrationOnImg, VibrationOffImg;
+    [SerializeField] AudioClip ClickSound;
 
-    private bool isVibrationEnabled = true;
+    [SerializeField] bool isVibrationEnabled = true;
 
+    public static MenuManager instance;
     private void Start()
     {
+        instance = this;
+        OnVibrationOnOff();
         TapImage.transform.DOScale(new Vector3(1.3f, 1.3f, 1.3f), 1.3f).SetLoops(-1,LoopType.Yoyo);
+    }
+    public void OnNameButtonInputPanel()
+    {
+        Vibration();
+        CommonScript.Instance.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(ClickSound);
+        Debug.Log("Working");
+        InputFieldPanel.SetActive(true);
+    }
+    public void OnDoneButtonInputPanel()
+    {
+        Vibration();
+        CommonScript.Instance.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(ClickSound);
+        InputFieldPanel.SetActive(false);
+        NameText.text = InputFieldText.text;
     }
     public void OnSettingPanelOpen()
     {
-        SettingPanel.SetActive(true);
+        //Debug.Log("Name = "+ CommonScript.instance.gameObject.transform.GetChild(0).gameObject.name);
+        
+        CommonScript.Instance.gameObject.transform.GetChild(0).GetComponent<AudioSource>().PlayOneShot(ClickSound);
+        Vibration();
+        SettingPanel.transform.DOScale(new Vector3(1, 1, 1), 0.5f);
+        BGClickRemoveImage.SetActive(true);
     }
     public void OnSettingPanelClose()
     {
-        SettingPanel.SetActive(false);
+        Vibration();
+        CommonScript.Instance.transform.GetChild(0).gameObject.GetComponent<AudioSource>().Play();
+        SettingPanel.transform.DOScale(new Vector3(0, 0, 0), 0.5f);
+        BGClickRemoveImage.SetActive(false);
     }
     public void Vibration()
     {
         if(SystemInfo.supportsVibration && isVibrationEnabled)
         {
             Handheld.Vibrate();
+            Debug.Log("Vibrating");
         }
     }
     public void OnVibrationOnOff()
     {
         isVibrationEnabled = !isVibrationEnabled;
+        if(isVibrationEnabled)
+        {
+            VibrationBtn.GetComponent<Image>().sprite = VibrationOnImg;
+        }
+        else
+        {
+            VibrationBtn.GetComponent<Image>().sprite = VibrationOffImg;
+        }
         Debug.Log("Vibration = " + isVibrationEnabled);
     }
     public void GameSceneLoad()
     {
+        CommonScript.Instance.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(ClickSound);
         SceneManager.LoadScene(1);
     }    
 }

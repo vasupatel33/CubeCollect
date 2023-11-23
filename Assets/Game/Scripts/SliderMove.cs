@@ -4,6 +4,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using System.Collections.Generic;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
+
 public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public Slider slider;
@@ -79,6 +81,7 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     // Method to be called when the slider click is released
     void HandleSliderRelease(BaseEventData eventData)
     {
+        MenuManager.instance.Vibration();
         OnSliderRelease.Invoke(); // Invoke any additional events or actions
         Invoke("SpawnCube", 0.4f);
     }
@@ -96,5 +99,9 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
     }
-   
+    
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
