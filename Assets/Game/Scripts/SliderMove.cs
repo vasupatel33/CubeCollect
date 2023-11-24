@@ -22,6 +22,7 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] GameObject CurrentPlayer;
     [SerializeField] GameObject parent;
     [SerializeField] List<GameObject> CubePref;
+    [SerializeField] AudioClip AddForceSound;
     private Rigidbody rb;
 
     private void Update()
@@ -81,6 +82,7 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     // Method to be called when the slider click is released
     void HandleSliderRelease(BaseEventData eventData)
     {
+        Common.InstanceC.gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(AddForceSound);
         MenuManager.instance.Vibration();
         OnSliderRelease.Invoke(); // Invoke any additional events or actions
         Invoke("SpawnCube", 0.4f);

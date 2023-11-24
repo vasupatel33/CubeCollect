@@ -4,12 +4,13 @@ public class CubeCollision : MonoBehaviour
 {
     public GameObject prefab2, prefab4, prefab8, prefab16, prefab32, prefab64, prefab128, prefab256, prefab512, prefab1024, prefab2048, prefab4096;
     [SerializeField] GameObject parent;
-    [SerializeField] AudioClip ClickSound, AddForceCubeSound, CubeCOllisionSound;
+    [SerializeField] AudioClip CubeCOllisionSound;
 
     private void Start()
     {
         parent = GameObject.FindGameObjectWithTag("Spawnner");
     }
+    private string lastGeneratedTag = "";
 
     void OnCollisionEnter(Collision collision)
     {
@@ -70,9 +71,9 @@ public class CubeCollision : MonoBehaviour
                 Sequence mySeq = DOTween.Sequence();
                 mySeq.Append(newGameObject.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.7f).SetEase(Ease.InOutElastic));
                 mySeq.Append(newGameObject.transform.DOScale(new Vector3(1f, 1f, 1f), 0.7f));
-
-                CommonScript.Instance.gameObject.transform.GetChild(0).GetComponent<AudioSource>().PlayOneShot(AddForceCubeSound);
-                CommonScript.Instance.gameObject.transform.GetChild(0).GetComponent<AudioSource>().pitch += 0.1f;
+            
+                Common.InstanceC.gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(CubeCOllisionSound);
+                //Common.InstanceC.gameObject.transform.GetChild(0).GetComponent<AudioSource>().pitch += 0.1f;
                 if (newGameObject != null)
                 {
                     newGameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * 350);
@@ -84,5 +85,4 @@ public class CubeCollision : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }

@@ -26,22 +26,20 @@ public class MenuManager : MonoBehaviour
     public void OnNameButtonInputPanel()
     {
         Vibration();
-        CommonScript.Instance.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(ClickSound);
+        Common.InstanceC.gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(ClickSound);
         Debug.Log("Working");
         InputFieldPanel.SetActive(true);
     }
     public void OnDoneButtonInputPanel()
     {
         Vibration();
-        CommonScript.Instance.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(ClickSound);
+        Common.InstanceC.gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(ClickSound);
         InputFieldPanel.SetActive(false);
         NameText.text = InputFieldText.text;
     }
     public void OnSettingPanelOpen()
     {
-        //Debug.Log("Name = "+ CommonScript.instance.gameObject.transform.GetChild(0).gameObject.name);
-        
-        CommonScript.Instance.gameObject.transform.GetChild(0).GetComponent<AudioSource>().PlayOneShot(ClickSound);
+        Common.InstanceC.gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(ClickSound);
         Vibration();
         SettingPanel.transform.DOScale(new Vector3(1, 1, 1), 0.5f);
         BGClickRemoveImage.SetActive(true);
@@ -49,7 +47,7 @@ public class MenuManager : MonoBehaviour
     public void OnSettingPanelClose()
     {
         Vibration();
-        CommonScript.Instance.transform.GetChild(0).gameObject.GetComponent<AudioSource>().Play();
+        Common.InstanceC.gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(ClickSound);
         SettingPanel.transform.DOScale(new Vector3(0, 0, 0), 0.5f);
         BGClickRemoveImage.SetActive(false);
     }
@@ -76,7 +74,7 @@ public class MenuManager : MonoBehaviour
     }
     public void GameSceneLoad()
     {
-        CommonScript.Instance.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(ClickSound);
+        Common.InstanceC.gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(ClickSound);
         SceneManager.LoadScene(1);
     }    
 }
