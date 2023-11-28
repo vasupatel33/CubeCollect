@@ -76,5 +76,34 @@ public class MenuManager : MonoBehaviour
     {
         Common.InstanceC.gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(ClickSound);
         SceneManager.LoadScene(1);
-    }    
+    }
+    public void SoundManager()
+    {
+        if (Common.Instance.isSoundPlaying == false)
+        {
+            Common.Instance.gameObject.transform.GetChild(1).GetComponent<AudioSource>().mute = false;
+            SoundBtn.GetComponent<Image>().sprite = SoundOnImg;
+            Common.Instance.isSoundPlaying = true;
+        }
+        else
+        {
+            Common.Instance.gameObject.transform.GetChild(1).GetComponent<AudioSource>().mute = true;
+            SoundBtn.GetComponent<Image>().sprite = SoundOffImg;
+            Common.Instance.isSoundPlaying = false;
+        }
+    }
+    public void SoundSet()
+    {
+        if (Common.Instance.isSoundPlaying == false)
+        {
+            Common.Instance.gameObject.transform.GetChild(1).GetComponent<AudioSource>().mute = true;
+            SoundBtn.GetComponent<Image>().sprite = SoundOffImg;
+        }
+        else
+        {
+            Common.Instance.gameObject.transform.GetChild(1).GetComponent<AudioSource>().mute = false;
+            SoundBtn.GetComponent<Image>().sprite = SoundOnImg;
+
+        }
+    }
 }

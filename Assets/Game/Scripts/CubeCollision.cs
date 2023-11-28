@@ -69,7 +69,7 @@ public class CubeCollision : MonoBehaviour
                         break;
                 }
                 Sequence mySeq = DOTween.Sequence();
-                mySeq.Append(newGameObject.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.7f).SetEase(Ease.InOutElastic));
+                mySeq.Append(newGameObject.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.7f).SetEase(Ease.OutElastic));
                 mySeq.Append(newGameObject.transform.DOScale(new Vector3(1f, 1f, 1f), 0.7f));
             
                 Common.InstanceC.gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(CubeCOllisionSound);
