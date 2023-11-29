@@ -96,13 +96,13 @@ public class MenuManager : MonoBehaviour
     {
         if (Common.InstanceC.isSoundPlaying == false)
         {
-            Common.InstanceC.gameObject.transform.GetChild(0).GetComponent<AudioSource>().mute = true;
-            SoundBtn.GetComponent<Image>().sprite = SoundOffImg;
+            Common.InstanceC.gameObject.transform.GetChild(0).GetComponent<AudioSource>().mute = false;
+            SoundBtn.GetComponent<Image>().sprite = SoundOnImg;
         }
         else
         {
-            Common.InstanceC.gameObject.transform.GetChild(0).GetComponent<AudioSource>().mute = false;
-            SoundBtn.GetComponent<Image>().sprite = SoundOnImg;
+            Common.InstanceC.gameObject.transform.GetChild(0).GetComponent<AudioSource>().mute = true;
+            SoundBtn.GetComponent<Image>().sprite = SoundOffImg;
         }
     }
 }
