@@ -3,6 +3,8 @@ using DG.Tweening;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Burst.Intrinsics;
+
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] GameObject TapImage, SettingPanel, InputFieldPanel, BGClickRemoveImage;
@@ -11,16 +13,15 @@ public class MenuManager : MonoBehaviour
     [SerializeField] Button VibrationBtn, SoundBtn;
     [SerializeField] Sprite VibrationOnImg, VibrationOffImg;
     [SerializeField] AudioClip ClickSound;
+
     [SerializeField] bool isVibrationEnabled = true;
-    [SerializeField] Sprite SoundOnImg, SoundOffImg;
 
     public static MenuManager instance;
     private void Start()
     {
         instance = this;
         OnVibrationOnOff();
-        TapImage.transform.DOScale(new Vector3(1.3f, 1.3f, 1.3f), 1.3f).SetLoops(-1, LoopType.Yoyo);
-        SoundSet();
+        TapImage.transform.DOScale(new Vector3(1.3f, 1.3f, 1.3f), 1.3f).SetLoops(-1,LoopType.Yoyo);
     }
     public void OnNameButtonInputPanel()
     {
@@ -52,7 +53,7 @@ public class MenuManager : MonoBehaviour
     }
     public void Vibration()
     {
-        if (SystemInfo.supportsVibration && isVibrationEnabled)
+        if(SystemInfo.supportsVibration && isVibrationEnabled)
         {
             Handheld.Vibrate();
             Debug.Log("Vibrating");
@@ -61,7 +62,7 @@ public class MenuManager : MonoBehaviour
     public void OnVibrationOnOff()
     {
         isVibrationEnabled = !isVibrationEnabled;
-        if (isVibrationEnabled)
+        if(isVibrationEnabled)
         {
             VibrationBtn.GetComponent<Image>().sprite = VibrationOnImg;
         }
@@ -75,34 +76,5 @@ public class MenuManager : MonoBehaviour
     {
         Common.InstanceC.gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(ClickSound);
         SceneManager.LoadScene(1);
-    }
-    public void SoundManager()
-    {
-        Common.InstanceC.gameObject.transform.GetChild(0).GetComponent<AudioSource>().PlayOneShot(ClickSound);
-        if (Common.InstanceC.isSoundPlaying == false)
-        {
-            Common.InstanceC.gameObject.transform.GetChild(0).GetComponent<AudioSource>().mute = false;
-            SoundBtn.GetComponent<Image>().sprite = SoundOnImg;
-            Common.InstanceC.isSoundPlaying = true;
-        }
-        else
-        {
-            Common.InstanceC.gameObject.transform.GetChild(0).GetComponent<AudioSource>().mute = true;
-            SoundBtn.GetComponent<Image>().sprite = SoundOffImg;
-            Common.InstanceC.isSoundPlaying = false;
-        }
-    }
-    public void SoundSet()
-    {
-        if (Common.InstanceC.isSoundPlaying == false)
-        {
-            Common.InstanceC.gameObject.transform.GetChild(0).GetComponent<AudioSource>().mute = false;
-            SoundBtn.GetComponent<Image>().sprite = SoundOnImg;
-        }
-        else
-        {
-            Common.InstanceC.gameObject.transform.GetChild(0).GetComponent<AudioSource>().mute = true;
-            SoundBtn.GetComponent<Image>().sprite = SoundOffImg;
-        }
-    }
+    }    
 }
