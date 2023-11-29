@@ -362,6 +362,8 @@ MonoBehaviour:
   SoundBtn: {fileID: 320405935}
   VibrationOnImg: {fileID: 21300000, guid: 030446d4cf017d2498caac1bb173ab07, type: 3}
   VibrationOffImg: {fileID: 21300000, guid: 555c54b42cb4a90478a1b666a52f1da2, type: 3}
+  SoundOnImg: {fileID: 21300000, guid: 53a4ca8c69db0bd40b777480c821389f, type: 3}
+  SoundOffImg: {fileID: 21300000, guid: f39af6706fc71e9419a245fdfc94c99d, type: 3}
   ClickSound: {fileID: 8300000, guid: 2f6e53c20b94e5847b241b12acfc7a5e, type: 3}
   isVibrationEnabled: 1
 --- !u!4 &278067000
@@ -460,7 +462,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 320405936}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 278066999}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: SoundManagement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &320405936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2528,6 +2542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7f7f62ea87e4f40b8b7fd359dba334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundPlaying: 0
 --- !u!1 &1923356919
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI NameText;
     [SerializeField] Button VibrationBtn, SoundBtn;
     [SerializeField] Sprite VibrationOnImg, VibrationOffImg;
+    [SerializeField] Sprite SoundOnImg, SoundOffImg;
     [SerializeField] AudioClip ClickSound;
 
     [SerializeField] bool isVibrationEnabled = true;
@@ -22,6 +23,7 @@ public class MenuManager : MonoBehaviour
         instance = this;
         OnVibrationOnOff();
         TapImage.transform.DOScale(new Vector3(1.3f, 1.3f, 1.3f), 1.3f).SetLoops(-1,LoopType.Yoyo);
+        SoundSet();
     }
     public void OnNameButtonInputPanel()
     {
@@ -76,5 +78,33 @@ public class MenuManager : MonoBehaviour
     {
         Common.InstanceC.gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(ClickSound);
         SceneManager.LoadScene(1);
-    }    
+    }
+    public void SoundManagement()
+    {
+        if (Common.InstanceC.soundPlaying == true)
+        {
+            SoundBtn.GetComponent<Image>().sprite = SoundOffImg;
+            Common.InstanceC.gameObject.transform.GetChild(1).GetComponent<AudioSource>().mute = true;
+            Common.InstanceC.soundPlaying = false;
+        }
+        else
+        {
+            SoundBtn.GetComponent<Image>().sprite = SoundOnImg;
+            Common.InstanceC.gameObject.transform.GetChild(1).GetComponent<AudioSource>().mute = false;
+            Common.InstanceC.soundPlaying = true;
+        }
+    }
+    public void SoundSet()
+    {
+        if (Common.InstanceC.soundPlaying == true)
+        {
+            Common.InstanceC.gameObject.transform.GetChild(1).GetComponent<AudioSource>().mute = false;
+            SoundBtn.GetComponent<Image>().sprite = SoundOnImg;
+        }
+        else
+        {
+            Common.InstanceC.gameObject.transform.GetChild(1).GetComponent<AudioSource>().mute = true;
+            SoundBtn.GetComponent<Image>().sprite = SoundOffImg;
+        }
+    }
 }

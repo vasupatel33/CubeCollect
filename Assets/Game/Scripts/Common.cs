@@ -5,7 +5,7 @@ using UnityEngine;
 public class Common : MonoBehaviour
 {
     public static Common InstanceC;
-    public bool isSoundPlaying;
+    public bool soundPlaying;
     void Start()
     {
         if(!InstanceC)
