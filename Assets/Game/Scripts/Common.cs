@@ -6,9 +6,9 @@ public class Common : MonoBehaviour
 {
     public static Common InstanceC;
     public bool soundPlaying;
-    void Start()
+    private void Awake()
     {
-        if(!InstanceC)
+        if (!InstanceC)
         {
             InstanceC = this;
             DontDestroyOnLoad(this.gameObject);

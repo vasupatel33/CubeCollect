@@ -5,7 +5,7 @@ public class CubeCollision : MonoBehaviour
     public GameObject prefab2, prefab4, prefab8, prefab16, prefab32, prefab64, prefab128, prefab256, prefab512, prefab1024, prefab2048, prefab4096;
     [SerializeField] GameObject parent;
     [SerializeField] AudioClip CubeCOllisionSound;
-
+    [SerializeField] GameObject GameOverPanel;
     private void Start()
     {
         parent = GameObject.FindGameObjectWithTag("Spawnner");
@@ -16,7 +16,25 @@ public class CubeCollision : MonoBehaviour
     {
         if(collision.gameObject.tag == "over")
         {
-
+            Debug.Log("Pos = " + this.gameObject.name);
+            Debug.Log("Pos = " + SliderMove.instance.CurrentPlayer.name);
+            if (this.gameObject.name != SliderMove.instance.CurrentPlayer.name)
+            {
+                Debug.Log("Game over");
+                Debug.Log("Pos = "+ collision.gameObject.name);
+                Debug.Log("Pos = "+ SliderMove.instance.CurrentPlayer.name);
+            }
+            //foreach (GameObject gameObj in SliderMove.instance.GeneratedCubes)
+            //{
+            //    if(gameObj.gameObject.tag == "over")
+            //    {
+            //        GameOverPanel.SetActive(true);
+            //    }
+            //    else
+            //    {
+            //        Debug.Log("Not touched");
+            //    }
+            //}
         }
         if (collision.gameObject.tag == gameObject.tag)
         {

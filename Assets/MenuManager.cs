@@ -18,10 +18,12 @@ public class MenuManager : MonoBehaviour
     [SerializeField] bool isVibrationEnabled = true;
 
     public static MenuManager instance;
-    private void Start()
+    private void Awake()
     {
         instance = this;
-        OnVibrationOnOff();
+    }
+    private void Start()
+    {
         TapImage.transform.DOScale(new Vector3(1.3f, 1.3f, 1.3f), 1.3f).SetLoops(-1,LoopType.Yoyo);
         SoundSet();
     }
@@ -84,13 +86,13 @@ public class MenuManager : MonoBehaviour
         if (Common.InstanceC.soundPlaying == true)
         {
             SoundBtn.GetComponent<Image>().sprite = SoundOffImg;
-            Common.InstanceC.gameObject.transform.GetChild(1).GetComponent<AudioSource>().mute = true;
+            Common.InstanceC.gameObject.transform.GetChild(0).GetComponent<AudioSource>().mute = true;
             Common.InstanceC.soundPlaying = false;
         }
         else
         {
             SoundBtn.GetComponent<Image>().sprite = SoundOnImg;
-            Common.InstanceC.gameObject.transform.GetChild(1).GetComponent<AudioSource>().mute = false;
+            Common.InstanceC.gameObject.transform.GetChild(0).GetComponent<AudioSource>().mute = false;
             Common.InstanceC.soundPlaying = true;
         }
     }
@@ -98,12 +100,12 @@ public class MenuManager : MonoBehaviour
     {
         if (Common.InstanceC.soundPlaying == true)
         {
-            Common.InstanceC.gameObject.transform.GetChild(1).GetComponent<AudioSource>().mute = false;
+            Common.InstanceC.gameObject.transform.GetChild(0).GetComponent<AudioSource>().mute = false;
             SoundBtn.GetComponent<Image>().sprite = SoundOnImg;
         }
         else
         {
-            Common.InstanceC.gameObject.transform.GetChild(1).GetComponent<AudioSource>().mute = true;
+            Common.InstanceC.gameObject.transform.GetChild(0).GetComponent<AudioSource>().mute = true;
             SoundBtn.GetComponent<Image>().sprite = SoundOffImg;
         }
     }

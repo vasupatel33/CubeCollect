@@ -347,7 +347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: -14.396}
+  m_AnchoredPosition: {x: -5, y: -14.396004}
   m_SizeDelta: {x: -20, y: 71.757}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &314476283
@@ -436,7 +436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -14.396}
+  m_AnchoredPosition: {x: 0, y: -14.395996}
   m_SizeDelta: {x: -20, y: -28.792}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &657454139
@@ -850,8 +850,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.7169812, g: 0.5018868, b: 0.4779874, a: 1}
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.5, g: 0.46030518, b: 0.45597482, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -994,7 +994,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: -17.8448}
+  m_AnchoredPosition: {x: 0, y: -17.844803}
   m_SizeDelta: {x: 0, y: 78.6548}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1166035644
@@ -1343,7 +1343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1574319751
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1376,7 +1376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1620,7 +1620,8 @@ MonoBehaviour:
   - {fileID: 8442865283195504189, guid: 446d880658f5fea40a3d826632669cf3, type: 3}
   - {fileID: 8442865283195504189, guid: a1ad8652f5822214b87eca9ca73a1aad, type: 3}
   - {fileID: 8442865283195504189, guid: 788a57ad5a428544b89ec6b53e415912, type: 3}
-  AddForceSound: {fileID: 0}
+  - {fileID: 8442865283195504189, guid: c762e1b54d394424e80b4b69d1c02e5e, type: 3}
+  AddForceSound: {fileID: 8300000, guid: f6e13f26a56b1034b90759baea98313c, type: 3}
 --- !u!1 &1726462444
 GameObject:
   m_ObjectHideFlags: 0
@@ -1704,8 +1705,8 @@ GameObject:
   - component: {fileID: 1916103565}
   - component: {fileID: 1916103564}
   m_Layer: 0
-  m_Name: Start
-  m_TagString: Untagged
+  m_Name: StartingPoint
+  m_TagString: over
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1888,8 +1889,8 @@ Canvas:
   m_GameObject: {fileID: 1986520535}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 963194227}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

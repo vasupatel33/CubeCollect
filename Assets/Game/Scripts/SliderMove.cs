@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -19,12 +20,19 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public float moveSpeed;
     //public float maxForce;
 
-    [SerializeField] GameObject CurrentPlayer;
+    public GameObject CurrentPlayer;
     [SerializeField] GameObject parent;
     [SerializeField] List<GameObject> CubePref;
+    public List<GameObject> GeneratedCubes;
     [SerializeField] AudioClip AddForceSound;
     private Rigidbody rb;
 
+    public static SliderMove instance;
+    private void Awake()
+    {
+        CanMove = true;
+        instance = this;
+    }
     private void Update()
     {
         if (CurrentPlayer != null)
@@ -32,23 +40,43 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             float sliderValue = slider.value;
 
             // Map the slider value to the position of the cube
-            float newPositionX = Mathf.Lerp(-1.5f, 1.5f, (sliderValue + 1f) / 2f); // Adjust the range as needed
-                                                                                   // Smoothly move the cube's position
+            float newPositionX = Mathf.Lerp(-1.5f, 1.5f, (sliderValue + 1f) / 2f); //Normal value setted
             CurrentPlayer.transform.position = Vector3.Lerp(CurrentPlayer.transform.position, new Vector3(newPositionX, CurrentPlayer.transform.position.y, CurrentPlayer.transform.position.z), moveSpeed * Time.deltaTime);
         }
     }
+    bool CanMove;
     void SpawnCube()
     {
-        int randomVal = Random.Range(0, CubePref.Count);
-        CurrentPlayer = Instantiate(CubePref[randomVal], new Vector3(0, 4f, -5.5f), Quaternion.identity, parent.transform);
-        CurrentPlayer.transform.DOScale(new Vector3(0,0,0), 0.01f);
-        CurrentPlayer.transform.DOScale(new Vector3(1, 1, 1), .8f).SetEase(Ease.OutBounce);
+        if (!CanMove)
+        {
+            int randomVal = Random.Range(0, CubePref.Count);
+            CurrentPlayer = Instantiate(CubePref[randomVal], new Vector3(0, 4f, -5.5f), Quaternion.identity, parent.transform);
+            CurrentPlayer.transform.DOScale(new Vector3(0, 0, 0), 0.01f);
+            CurrentPlayer.transform.DOScale(new Vector3(1, 1, 1), .8f).SetEase(Ease.OutBounce);
+            //CanMove = true;
+            StartCoroutine(WaitForMove());
+        }
+    }
+    IEnumerator WaitForMove()
+    {
+        yield return new WaitForSeconds(0.1f);
+        CanMove = true;
+    }
+    IEnumerator WaitForAddInList()
+    {
+        yield return new WaitForSeconds(0.2f);
+        GeneratedCubes.Add(CurrentPlayer);
     }
     public void OnCLickRelease()
     {
-        Debug.Log("Force applied");
-        CurrentPlayer.GetComponent<Rigidbody>().AddForce(Vector3.forward * moveSpeed, ForceMode.VelocityChange);
-        //this.transform.SetParent(newParent);
+        if (CanMove)
+        {
+            CanMove = false;
+            Debug.Log("Force applied");
+            //StartCoroutine(WaitUntillSpawn());
+            CurrentPlayer.GetComponent<Rigidbody>().AddForce(Vector3.forward * moveSpeed, ForceMode.VelocityChange);
+            StartCoroutine(WaitForAddInList());
+        }
     }
     void Start()
     {
@@ -78,7 +106,6 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         OnSliderClick.Invoke(); // Invoke any additional events or actions
     }
-
     // Method to be called when the slider click is released
     void HandleSliderRelease(BaseEventData eventData)
     {
