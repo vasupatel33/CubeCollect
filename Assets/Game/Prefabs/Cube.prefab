@@ -827,7 +827,7 @@ GameObject:
   - component: {fileID: 8415104976921638441}
   - component: {fileID: 8834494745823733832}
   - component: {fileID: 5485711729572170200}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: 2
   m_Icon: {fileID: 0}
@@ -981,8 +981,18 @@ MonoBehaviour:
   prefab2: {fileID: 8442865283195504189, guid: dd6f845ce7ff86f4488bf0c6b4f3e864, type: 3}
   prefab4: {fileID: 8442865283195504189, guid: 446d880658f5fea40a3d826632669cf3, type: 3}
   prefab8: {fileID: 8442865283195504189, guid: a1ad8652f5822214b87eca9ca73a1aad, type: 3}
-  prefab16: {fileID: 0}
-  prefab32: {fileID: 0}
+  prefab16: {fileID: 8442865283195504189, guid: 788a57ad5a428544b89ec6b53e415912, type: 3}
+  prefab32: {fileID: 8442865283195504189, guid: c762e1b54d394424e80b4b69d1c02e5e, type: 3}
+  prefab64: {fileID: 0}
+  prefab128: {fileID: 0}
+  prefab256: {fileID: 0}
+  prefab512: {fileID: 0}
+  prefab1024: {fileID: 0}
+  prefab2048: {fileID: 0}
+  prefab4096: {fileID: 0}
+  parent: {fileID: 0}
+  CubeCOllisionSound: {fileID: 0}
+  GameOverPanel: {fileID: 0}
 --- !u!1 &6852149143710467708
 GameObject:
   m_ObjectHideFlags: 0

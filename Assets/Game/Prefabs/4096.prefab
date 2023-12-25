@@ -1030,7 +1030,7 @@ GameObject:
   - component: {fileID: 587429500389022841}
   - component: {fileID: 5906036011982770857}
   - component: {fileID: 243850185775635544}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 4096
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1181,6 +1181,8 @@ MonoBehaviour:
   prefab2048: {fileID: 8442865283195504189, guid: 68e8155b015210e498b38a73c3c0567e, type: 3}
   prefab4096: {fileID: 8442865283195504189}
   parent: {fileID: 0}
+  CubeCOllisionSound: {fileID: 0}
+  GameOverPanel: {fileID: 0}
 --- !u!114 &243850185775635544
 MonoBehaviour:
   m_ObjectHideFlags: 0

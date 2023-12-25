@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8863031008199978957}
   - component: {fileID: 6385633612962475732}
   - component: {fileID: 4245368979952017999}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NumText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 2392404054330123554}
   - component: {fileID: 8686014981755279378}
   - component: {fileID: 4613511776545469843}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NumText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 7560475046052135526}
   - component: {fileID: 3094801539872780126}
   - component: {fileID: 794963557972628369}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NumText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 8329331567412929466}
   - component: {fileID: 2413347776322488170}
   - component: {fileID: 5845899552827798150}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NumText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 3386707373083591318}
   - component: {fileID: 8132064052227854686}
   - component: {fileID: 3237958423637778878}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NumText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -864,7 +864,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 866597222690300346}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NumHolder (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -896,7 +896,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7663832988876560112}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NumHolder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -928,7 +928,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9089013993248651733}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NumHolder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -960,7 +960,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2717184378452883331}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NumHolder (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -992,7 +992,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 247930809010246245}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NumHolder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1030,7 +1030,7 @@ GameObject:
   - component: {fileID: 587429500389022841}
   - component: {fileID: 6909139930936901844}
   - component: {fileID: 752900691446172907}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 2
   m_TagString: 2
   m_Icon: {fileID: 0}
@@ -1194,9 +1194,8 @@ MonoBehaviour:
   prefab2048: {fileID: 8442865283195504189, guid: 68e8155b015210e498b38a73c3c0567e, type: 3}
   prefab4096: {fileID: 8442865283195504189, guid: 1c0397f51e24a0b4287372765c900178, type: 3}
   parent: {fileID: 0}
-  ClickSound: {fileID: 8300000, guid: 2f6e53c20b94e5847b241b12acfc7a5e, type: 3}
-  AddForceCubeSound: {fileID: 8300000, guid: f6e13f26a56b1034b90759baea98313c, type: 3}
   CubeCOllisionSound: {fileID: 8300000, guid: e8a027981088f024dbbe9c70a5d4d056, type: 3}
+  GameOverPanel: {fileID: 0}
 --- !u!1 &8462195467668319537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,7 +1205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7202408275399950225}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NumHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1240,7 +1239,7 @@ GameObject:
   - component: {fileID: 4300753211231684113}
   - component: {fileID: 7260370776710487930}
   - component: {fileID: 6546185597588719898}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NumText
   m_TagString: Untagged
   m_Icon: {fileID: 0}

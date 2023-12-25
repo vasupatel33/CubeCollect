@@ -1030,7 +1030,7 @@ GameObject:
   - component: {fileID: 587429500389022841}
   - component: {fileID: 3505692294502516664}
   - component: {fileID: 5168604654753396203}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 8
   m_TagString: 8
   m_Icon: {fileID: 0}
@@ -1194,9 +1194,8 @@ MonoBehaviour:
   prefab2048: {fileID: 8442865283195504189, guid: 68e8155b015210e498b38a73c3c0567e, type: 3}
   prefab4096: {fileID: 8442865283195504189, guid: 1c0397f51e24a0b4287372765c900178, type: 3}
   parent: {fileID: 0}
-  ClickSound: {fileID: 8300000, guid: 2f6e53c20b94e5847b241b12acfc7a5e, type: 3}
-  AddForceCubeSound: {fileID: 8300000, guid: f6e13f26a56b1034b90759baea98313c, type: 3}
   CubeCOllisionSound: {fileID: 8300000, guid: e8a027981088f024dbbe9c70a5d4d056, type: 3}
+  GameOverPanel: {fileID: 0}
 --- !u!1 &8462195467668319537
 GameObject:
   m_ObjectHideFlags: 0

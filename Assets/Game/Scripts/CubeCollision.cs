@@ -12,12 +12,23 @@ public class CubeCollision : MonoBehaviour
     }
     private string lastGeneratedTag = "";
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == 0)
+        {
+            Debug.Log("gAME OVER TRY AGAIN");
+        }
+    }
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "over")
         {
-            Debug.Log("Pos = " + this.gameObject.name);
-            Debug.Log("Pos = " + SliderMove.instance.CurrentPlayer.name);
+            if (collision.gameObject.layer == 0)
+            {
+                Debug.Log("Game Over Brother");
+            }
+            //Debug.Log("Pos = " + this.gameObject.name);
+            //Debug.Log("Pos = " + SliderMove.instance.CurrentPlayer.name);
             if (this.gameObject.name != SliderMove.instance.CurrentPlayer.name)
             {
                 Debug.Log("Game over");
@@ -86,6 +97,7 @@ public class CubeCollision : MonoBehaviour
                     default:
                         break;
                 }
+                newGameObject.layer = 0;
                 Sequence mySeq = DOTween.Sequence();
                 mySeq.Append(newGameObject.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.7f).SetEase(Ease.OutElastic));
                 mySeq.Append(newGameObject.transform.DOScale(new Vector3(1f, 1f, 1f), 0.7f));

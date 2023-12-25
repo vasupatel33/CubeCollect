@@ -75,6 +75,7 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             Debug.Log("Force applied");
             //StartCoroutine(WaitUntillSpawn());
             CurrentPlayer.GetComponent<Rigidbody>().AddForce(Vector3.forward * moveSpeed, ForceMode.VelocityChange);
+            CurrentPlayer.layer = 0;
             StartCoroutine(WaitForAddInList());
         }
     }
