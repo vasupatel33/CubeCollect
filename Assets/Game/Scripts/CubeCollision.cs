@@ -1,20 +1,28 @@
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
+
 public class CubeCollision : MonoBehaviour
 {
     public GameObject prefab2, prefab4, prefab8, prefab16, prefab32, prefab64, prefab128, prefab256, prefab512, prefab1024, prefab2048, prefab4096;
     [SerializeField] GameObject parent;
     [SerializeField] AudioClip CubeCOllisionSound;
     [SerializeField] GameObject GameOverPanel;
+    
+    public GameObject newGameObject;
+    private void Awake()
+    {
+    }
     private void Start()
     {
+        GameOverPanel = GameObject.FindGameObjectWithTag("GameOverPanelTag");
         parent = GameObject.FindGameObjectWithTag("Spawnner");
     }
     private string lastGeneratedTag = "";
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 0)
+        if(other.gameObject.tag == "over")
         {
             Debug.Log("gAME OVER TRY AGAIN");
         }
@@ -23,17 +31,24 @@ public class CubeCollision : MonoBehaviour
     {
         if(collision.gameObject.tag == "over")
         {
-            if (collision.gameObject.layer == 0)
-            {
-                Debug.Log("Game Over Brother");
-            }
-            //Debug.Log("Pos = " + this.gameObject.name);
-            //Debug.Log("Pos = " + SliderMove.instance.CurrentPlayer.name);
+            Debug.Log("over");
+            //if (collision.gameObject.layer == 0)
+            //{
+            //    //ScoreTextGameOverPanel.text = ScoreText.text;
+            //    //GameOverPanel.SetActive(true);
+            //    Debug.Log("Game Over Brother");
+            //}
+            //if (this.gameObject.tag != SliderMove.instance.CurrentPlayer.tag)
+            //{ 
+                
+            //}
             if (this.gameObject.name != SliderMove.instance.CurrentPlayer.name)
             {
+                GameOverPanel.SetActive(true);
+                GameManager.instance.GameOverPanelAnimation();
                 Debug.Log("Game over");
-                Debug.Log("Pos = "+ collision.gameObject.name);
-                Debug.Log("Pos = "+ SliderMove.instance.CurrentPlayer.name);
+                Debug.Log("Pos = " + collision.gameObject.name);
+                Debug.Log("Pos = " + SliderMove.instance.CurrentPlayer.name);
             }
             //foreach (GameObject gameObj in SliderMove.instance.GeneratedCubes)
             //{
@@ -50,7 +65,7 @@ public class CubeCollision : MonoBehaviour
         if (collision.gameObject.tag == gameObject.tag)
         {
             MenuManager.instance.Vibration();
-            GameObject newGameObject = null;
+            newGameObject = null;
 
             if (gameObject.GetComponent<Bard>().CubeID > collision.gameObject.GetComponent<Bard>().CubeID)
             {
@@ -111,7 +126,6 @@ public class CubeCollision : MonoBehaviour
                     Debug.Log("Called");
                 }
             }
-
             Destroy(gameObject);
         }
     }

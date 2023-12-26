@@ -53,6 +53,7 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             CurrentPlayer = Instantiate(CubePref[randomVal], new Vector3(0, 4f, -5.5f), Quaternion.identity, parent.transform);
             CurrentPlayer.transform.DOScale(new Vector3(0, 0, 0), 0.01f);
             CurrentPlayer.transform.DOScale(new Vector3(1, 1, 1), .8f).SetEase(Ease.OutBounce);
+            
             //CanMove = true;
             StartCoroutine(WaitForMove());
         }
@@ -128,10 +129,5 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-    }
-    
-    public void BackToMenu()
-    {
-        SceneManager.LoadScene(0);
     }
 }

@@ -3,7 +3,6 @@ using DG.Tweening;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-using Unity.Burst.Intrinsics;
 
 public class MenuManager : MonoBehaviour
 {
@@ -78,6 +77,7 @@ public class MenuManager : MonoBehaviour
     }
     public void GameSceneLoad()
     {
+        Time.timeScale = 1;
         Common.InstanceC.gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>().PlayOneShot(ClickSound);
         SceneManager.LoadScene(1);
     }

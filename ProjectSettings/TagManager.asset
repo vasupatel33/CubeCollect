@@ -17,6 +17,7 @@ TagManager:
   - 1024
   - 2048
   - over
+  - GameOverPanelTag
   layers:
   - Default
   - TransparentFX
