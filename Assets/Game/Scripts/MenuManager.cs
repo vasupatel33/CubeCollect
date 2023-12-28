@@ -109,4 +109,8 @@ public class MenuManager : MonoBehaviour
             SoundBtn.GetComponent<Image>().sprite = SoundOffImg;
         }
     }
+    public void OnApplicationQuitt()
+    {
+        Application.Quit();
+    }
 }

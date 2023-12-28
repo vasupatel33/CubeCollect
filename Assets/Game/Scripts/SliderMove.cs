@@ -13,7 +13,6 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public UnityEvent OnSliderClick;
 
-    
     // UnityEvent for when the user releases the click on the slider
     public UnityEvent OnSliderRelease;
 
@@ -54,7 +53,7 @@ public class SliderMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             CurrentPlayer.transform.DOScale(new Vector3(0, 0, 0), 0.01f);
             CurrentPlayer.transform.DOScale(new Vector3(1, 1, 1), .8f).SetEase(Ease.OutBounce);
             
-            //CanMove = true;
+            //CanMove = true;    
             StartCoroutine(WaitForMove());
         }
     }
