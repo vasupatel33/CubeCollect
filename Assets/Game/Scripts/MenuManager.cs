@@ -56,11 +56,11 @@ public class MenuManager : MonoBehaviour
     }
     public void Vibration()
     {
-        if(SystemInfo.supportsVibration && isVibrationEnabled)
-        {
-            Handheld.Vibrate();
-            Debug.Log("Vibrating");
-        }
+        //if(SystemInfo.supportsVibration && isVibrationEnabled)
+        //{
+        //    //Handheld.Vibrate();
+        //    Debug.Log("Vibrating");
+        //}
     }
     public void OnVibrationOnOff()
     {
